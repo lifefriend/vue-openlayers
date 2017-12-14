@@ -1,4 +1,4 @@
-# mobile
+# vue-openlayers
 
 > A Vue.js project
 

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h1>{{ msg }}</h1>
+    <h2>{{ msg }}</h2>
   </div>
 </template>
 
@@ -14,15 +14,10 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .wrapper{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: #fff;
-  height: 100px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 </style>

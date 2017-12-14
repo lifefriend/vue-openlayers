@@ -1,9 +1,11 @@
 <template>
   <div class="wrapper">
-    <div>
-      <topNav></topNav>
+    <div class="nav-wrapper">
+        <topNav></topNav>
     </div>
-    <div id="map"></div>
+    <div class="map-wrapper">
+        <div id="map"></div>
+    </div>
   </div>
 </template>
 
@@ -34,19 +36,34 @@ function initMap () {
     ],
     target: 'map',
     view: new ol.View({
-      center: [0, 0],
-      zoom: 2
+      center: [114.316200103, 30.5810841269],
+      projection: 'EPSG:4326',
+      zoom: 8
     })
   })
-  console.log(myMap)
+  myMap.on('singleclick', function (evt) {
+    let coordinate = evt.coordinate
+    let x = coordinate[0]
+    let y = coordinate[1]
+    console.log('x:', x, 'y:', y)
+  })
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .wrapper {
-  width: 100%; 
-  height: 100%;
-  overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    box-sizing: border-box;
+}
+.nav-wrapper{
+    flex:0 0 60px;
+}
+.map-wrapper{
+    flex: 1;
+    overflow: hidden;
 }
 </style>
