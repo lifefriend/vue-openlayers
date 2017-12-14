@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="nav-wrapper">
-        <topNav></topNav>
+        <topNav @add-data-event="addDataEvent" ref="topNav"></topNav>
     </div>
     <div class="map-wrapper">
         <div id="map"></div>
@@ -12,6 +12,8 @@
 <script>
 import ol from 'openlayers'
 import topNav from '@/components/topNav'
+
+let myMap, self
 export default {
   name: 'ol2d',
   components: { topNav },
@@ -21,12 +23,17 @@ export default {
     }
   },
   mounted () {
+    self = self || this
     this.$nextTick(function () {
       initMap()
     })
+  },
+  methods: {
+    addDataEvent (dataInput) {
+      console.log(dataInput)
+    }
   }
 }
-let myMap
 function initMap () {
   myMap = new ol.Map({
     layers: [
@@ -46,6 +53,9 @@ function initMap () {
     let x = coordinate[0]
     let y = coordinate[1]
     console.log('x:', x, 'y:', y)
+    // 调用子组件
+    let child = self.$refs.topNav
+    child.addData4father(1)
   })
 }
 </script>

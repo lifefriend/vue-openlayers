@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h2>{{ msg }}</h2>
+    <button @click="addDataItem()">{{ button1 }}</button>
   </div>
 </template>
 
@@ -9,7 +9,17 @@ export default {
   name: 'topNav',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App with openlayers4'
+      button1: '按钮1'
+    }
+  },
+  methods: {
+    addDataItem () {
+      let self = this
+      // 派遣事件到父组件
+      self.$emit('add-data-event', 'button1')
+    },
+    addData4father (data) {
+      console.log(data)
     }
   }
 }
