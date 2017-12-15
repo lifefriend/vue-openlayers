@@ -1,17 +1,21 @@
 <template>
-  <div class="wrapper">
-    <div class="nav-wrapper">
-        <topNav @add-data-event="addDataEvent" ref="topNav"></topNav>
-    </div>
-    <div class="map-wrapper">
-        <div id="map"></div>
-    </div>
-  </div>
+  <el-container class="main-wrapper">
+    <el-header class="header-wrapper">
+      <topNav @add-data-event="addDataEvent" ref="topNav"></topNav>
+    </el-header>
+    <el-main class="map-wrapper">
+      <div id="map"></div>
+    </el-main>
+    <el-aside class="aside-wrapper" v-show="asideShow">
+      aside
+    </el-aside>
+  </el-container>
 </template>
 
 <script>
 import ol from 'openlayers'
 import topNav from '@/components/topNav'
+import { mapGetters } from 'vuex'
 
 let myMap, self
 export default {
@@ -32,6 +36,11 @@ export default {
     addDataEvent (dataInput) {
       console.log(dataInput)
     }
+  },
+  computed: {
+    ...mapGetters([
+      'asideShow'
+    ])
   }
 }
 function initMap () {
@@ -53,6 +62,8 @@ function initMap () {
     let x = coordinate[0]
     let y = coordinate[1]
     console.log('x:', x, 'y:', y)
+    // 操作侧边栏
+    self.$store.commit('asideToggle')
     // 调用子组件
     let child = self.$refs.topNav
     child.addData4father(1)
@@ -62,18 +73,30 @@ function initMap () {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.wrapper {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-flow: column;
-    box-sizing: border-box;
+.main-wrapper{
+  width: 100vw;
+  height: 100vh;
 }
-.nav-wrapper{
-    flex:0 0 60px;
+.header-wrapper,.map-wrapper{
+  margin: 0;
+  padding: 0;
 }
-.map-wrapper{
-    flex: 1;
-    overflow: hidden;
+.header-wrapper{
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+#map{
+  width: 100%;
+  height: 100%;
+}
+.aside-wrapper{
+  position: absolute;
+  top:0;
+  right: 0;
+  z-index: 2;
+  width: 150px;
+  height: 100vh;
+  background: #830000;
 }
 </style>

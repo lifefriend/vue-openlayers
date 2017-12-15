@@ -1,15 +1,18 @@
 <template>
   <div class="wrapper">
-    <button @click="addDataItem()">{{ button1 }}</button>
+    <div class="btn-primary">
+      <el-button type="primary"  @click="addDataItem()">{{ buttonName }}</el-button>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'topNav',
   data () {
     return {
-      button1: '按钮1'
+      msg: 'HelloWorld'
     }
   },
   methods: {
@@ -21,6 +24,11 @@ export default {
     addData4father (data) {
       console.log(data)
     }
+  },
+  computed: {
+    ...mapGetters([
+      'buttonName'
+    ])
   }
 }
 </script>
@@ -29,5 +37,10 @@ export default {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    padding:8px;
+    text-align: center;
+}
+.btn-primary{
+  width: 100%;
 }
 </style>

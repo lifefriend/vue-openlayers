@@ -26,4 +26,8 @@ html,body {
 .ol-attribution {
   display: none;
 }
+.ol-zoom {
+  top: unset;
+  bottom: .5em;
+}
 </style>
