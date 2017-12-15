@@ -6,9 +6,11 @@
     <el-main class="map-wrapper">
       <div id="map"></div>
     </el-main>
-    <el-aside class="aside-wrapper" v-show="asideShow">
-      aside
-    </el-aside>
+    <transition name="slide">
+      <el-aside class="aside-wrapper" v-show="asideShow">
+        aside
+      </el-aside>
+    </transition>   
   </el-container>
 </template>
 
@@ -99,4 +101,20 @@ function initMap () {
   height: 100vh;
   background: #830000;
 }
+/*定义元素最终移动到的位置，以及移动到此位置需要的时间*/
+.slide-enter-active {
+  transition: all .5s ease;
+  transform:translate3d(0,0,0);
+}
+  
+/*定义元素从什么位置离开，以及离开岛指定位置所需的时间*/
+.slide-leave-active{
+  transition: all .5s ease;
+  transform:translate3d(0,0,0);
+}
+  
+/*定义元素从100%的位置移入到0，过渡结束后再从0回到100%的位置*/
+.slide-enter,.slide-leave-to{
+  transform:translate3d(100%,0,0);
+} 
 </style>

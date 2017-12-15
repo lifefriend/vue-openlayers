@@ -38,7 +38,6 @@ export default {
     height: 100%;
     box-sizing: border-box;
     padding:8px;
-    text-align: center;
 }
 .btn-primary{
   width: 100%;
