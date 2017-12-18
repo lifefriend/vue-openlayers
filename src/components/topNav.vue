@@ -18,6 +18,8 @@ export default {
   methods: {
     addDataItem () {
       let self = this
+      // 操作侧边栏
+      self.$store.commit('asideToggle')
       // 派遣事件到父组件
       self.$emit('add-data-event', 'button1')
     },

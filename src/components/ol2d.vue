@@ -8,7 +8,7 @@
     </el-main>
     <transition name="slide">
       <el-aside class="aside-wrapper" v-show="asideShow">
-        aside
+        <asideNav></asideNav>
       </el-aside>
     </transition>   
   </el-container>
@@ -17,12 +17,13 @@
 <script>
 import ol from 'openlayers'
 import topNav from '@/components/topNav'
+import asideNav from '@/components/asideNav'
 import { mapGetters } from 'vuex'
 
 let myMap, self
 export default {
   name: 'ol2d',
-  components: { topNav },
+  components: { topNav, asideNav },
   data () {
     return {
       olmap: null
@@ -64,17 +65,20 @@ function initMap () {
     let x = coordinate[0]
     let y = coordinate[1]
     console.log('x:', x, 'y:', y)
-    // 操作侧边栏
-    self.$store.commit('asideToggle')
     // 调用子组件
     let child = self.$refs.topNav
     child.addData4father(1)
+    // 关闭侧边栏
+    if (self.$store.state.asideShow) {
+      self.$store.commit('asideToggle')
+    }
   })
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
+@import "../assets/less/theme.less";
 .main-wrapper{
   width: 100vw;
   height: 100vh;
@@ -99,7 +103,7 @@ function initMap () {
   z-index: 2;
   width: 150px;
   height: 100vh;
-  background: #830000;
+  background: @asideColor;
 }
 /*定义元素最终移动到的位置，以及移动到此位置需要的时间*/
 .slide-enter-active {
