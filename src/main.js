@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import router from './router'
 import store from './store'
-// import Axios from 'axios'
+import Axios from 'axios'
 import ElementUI from 'element-ui'
 import 'openlayers/css/ol.css'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -15,7 +15,7 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 // 类似于vue-resource的调用方法，之后可以在实例里直接用this.$http.get()等
-// Vue.prototype.$http = Axios
+Vue.prototype.$http = Axios
 
 /* eslint-disable no-new */
 new Vue({

@@ -77,6 +77,8 @@ function initMap () {
     if (self.$store.state.asideShow) {
       self.$store.commit('asideToggle')
     }
+    // 获取数据
+    self.$store.dispatch('getData', 'id')
   })
 }
 </script>
