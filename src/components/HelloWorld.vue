@@ -1,6 +1,13 @@
 <template>
   <div class="hello">
+    <div>
+      <img src="../assets/logo.png" alt="">
+    </div>
     <h1>{{ msg }}</h1>
+    <h2>demo</h2>
+    <ul>
+      <li><a @click="$router.push('map')" href="#/map" target="_blank">ol2d</a></li>
+    </ul>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -33,6 +40,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello{
+  text-align: center;
+  padding-top:50px;
+}
 h1, h2 {
   font-weight: normal;
 }

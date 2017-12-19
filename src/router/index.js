@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
 import ol2d from '@/components/ol2d'
 
 Vue.use(Router)
@@ -8,6 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
+      path: '/map',
       name: 'ol2d',
       component: ol2d
     }

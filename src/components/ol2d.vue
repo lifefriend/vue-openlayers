@@ -5,12 +5,14 @@
     </el-header>
     <el-main class="map-wrapper">
       <div id="map"></div>
-    </el-main>
+    </el-main>   
     <transition name="slide">
-      <el-aside class="aside-wrapper" v-show="asideShow">
-        <asideNav></asideNav>
-      </el-aside>
-    </transition>   
+      <div class="aside-wrapper" v-show="asideShow">
+        <v-touch v-on:swiperight="onSwipeRighth" v-show="asideShow" class="swipe-wrapper">
+            <asideNav></asideNav>
+        </v-touch>
+      </div> 
+    </transition>     
   </el-container>
 </template>
 
@@ -38,6 +40,9 @@ export default {
   methods: {
     addDataEvent (dataInput) {
       console.log(dataInput)
+    },
+    onSwipeRighth () {
+      this.$store.commit('asideToggle')
     }
   },
   computed: {
@@ -101,9 +106,13 @@ function initMap () {
   top:0;
   right: 0;
   z-index: 2;
-  width: 150px;
-  height: 100vh;
+  height: 100%;
+  width: 200px;
   background: @asideColor;
+}
+.swipe-wrapper{
+  width: 100%;
+  height: 100%;
 }
 /*定义元素最终移动到的位置，以及移动到此位置需要的时间*/
 .slide-enter-active {

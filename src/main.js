@@ -9,11 +9,13 @@ import 'openlayers/css/ol.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, {name: 'v-touch'})
+Vue.use(ElementUI)
 Vue.config.productionTip = false
+
 // 类似于vue-resource的调用方法，之后可以在实例里直接用this.$http.get()等
 // Vue.prototype.$http = Axios
-
-Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 new Vue({
