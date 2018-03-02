@@ -27,4 +27,10 @@ npm run e2e
 npm test
 ```
 
+# lint change
+"lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+-->
+"lint": "eslint --fix .js,.vue src test/unit/specs test/e2e/specs"
+
+
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader) and [docs for vue-touch](https://github.com/vuejs/vue-touch/tree/next).
