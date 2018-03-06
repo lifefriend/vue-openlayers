@@ -7,6 +7,7 @@
     <h2>demo</h2>
     <ul>
       <li><a @click="$router.push('map')" href="#/map" target="_blank">ol2d</a></li>
+      <li><a @click="$router.push('test')" href="#/test" target="_blank">testComponent</a></li>
     </ul>
     <h2>Essential Links</h2>
     <ul>
